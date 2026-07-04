@@ -1,24 +1,24 @@
-class Valid_Anagram_242{
-
-     static int fib(int n){
-           
-        if(n == 0 ){
-            return 0;
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        int[] freq = new int[26];
+        if(s.length() != t.length()){
+            return false;
         }
-        else if(n ==1){
-            return 1;
+        for(int i = 0 ; i < s.length() ; i++){
+            freq[s.charAt(i)-'a']++;
         } 
-        else{
+        for(int j = 0 ; j <t.length() ; j++){
 
-            return  fib(n-1)+fib(n-2);
-            
+             freq[t.charAt(j)-'a']--;
         }
+        for(int k = 0 ; k < 26; k++){
+            if(freq[k] != 0 ){
+                 return false;
             }
-           
-     
+        
+        }
+        return true;
+        
+   }
 
-    public static void main(String[] args){
-          
-        System.out.println(fib(8));
-    }
 }
